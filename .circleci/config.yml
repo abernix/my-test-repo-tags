@@ -54,4 +54,4 @@ workflows:
             tags:
               only: /^group-/
             branches:
-              only: master
+              ignore: master
