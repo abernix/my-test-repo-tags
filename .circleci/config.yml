@@ -30,7 +30,6 @@ jobs:
       - run: "Echo, real publish."
 
 workflows:
-  version: 2
   Build and Test:
     jobs:
       - NodeJS 12
