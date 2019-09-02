@@ -38,7 +38,7 @@ workflows:
             branches:
               only: /.*/
             tags:
-              only: /^group-/
+              only: /.*/
       - Dry publish:
           requires:
             - NodeJS 12
@@ -46,7 +46,7 @@ workflows:
             branches:
               only: /.*/
             tags:
-              only: /^group-/
+              only: /.*/
       - Real publish if necessary:
           requires:
             - Dry publish
