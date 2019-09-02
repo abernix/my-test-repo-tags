@@ -33,10 +33,16 @@ jobs:
 workflows:
   Build and Test:
     jobs:
-      - NodeJS 12
+      - NodeJS 12:
+          filters:
+            tags:
+              only: /^group-/
       - Dry publish:
           requires:
             - NodeJS 12
+          filters:
+            tags:
+              only: /^group-/
       - Real publish if necessary:
           requires:
             - Dry publish
