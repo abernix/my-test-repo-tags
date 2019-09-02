@@ -23,12 +23,12 @@ jobs:
   Dry publish:
     executor: node
     steps:
-      - run: "Echo, yup."
+      - run: echo "Echo, yup."
 
   Real publish if necessary:
     executor: node
     steps:
-      - run: "Echo, real publish."
+      - run: echo "Echo, real publish."
 
 workflows:
   Build and Test:
