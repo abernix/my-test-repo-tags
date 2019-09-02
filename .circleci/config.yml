@@ -35,17 +35,23 @@ workflows:
     jobs:
       - NodeJS 12:
           filters:
+            branches:
+              only: /.*/
             tags:
               only: /^group-/
       - Dry publish:
           requires:
             - NodeJS 12
           filters:
+            branches:
+              only: /.*/
             tags:
               only: /^group-/
       - Real publish if necessary:
           requires:
             - Dry publish
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only: /^group-/
