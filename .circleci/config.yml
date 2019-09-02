@@ -1,0 +1,45 @@
+version: 2.1
+
+executors:
+  node:
+    parameters:
+      tag:
+        type: string
+        default: '10'
+    docker:
+      - image: circleci/node:<< parameters.tag >>
+
+
+jobs:
+  NodeJS 12:
+    executor: { name: node, tag: '12' }
+    steps:
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./**
+
+  Dry publish:
+    executor: node
+    steps:
+      - run: "Echo, yup."
+
+  Real publish if necessary:
+    executor: node
+    steps:
+      - run: "Echo, real publish."
+
+workflows:
+  version: 2
+  Build and Test:
+    jobs:
+      - NodeJS 12
+      - Dry publish:
+          requires:
+            - NodeJS 12
+      - Real publish if necessary:
+          requires:
+            - Dry publish
+          filters:
+            tags:
+              only: /^group-/
