@@ -53,5 +53,3 @@ workflows:
           filters:
             tags:
               only: /^group-/
-            branches:
-              ignore: /^master/
